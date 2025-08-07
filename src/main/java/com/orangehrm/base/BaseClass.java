@@ -92,7 +92,7 @@ public class BaseClass {
 			
 			// Create ChromeOptions
 			ChromeOptions options = new ChromeOptions();
-			options.addArguments("--headless"); // Run Chrome in headless mode
+			//options.addArguments("--headless"); // Run Chrome in headless mode
 			options.addArguments("--disable-gpu"); // Disable GPU for headless mode
 			//options.addArguments("--window-size=1920,1080"); // Set window size
 			options.addArguments("--disable-notifications"); // Disable browser notifications
