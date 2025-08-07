@@ -29,7 +29,7 @@ public class ExtentManager {
 	public synchronized static ExtentReports getReporter() {
 		if (extent == null) {
 			String timeStamp = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new Date());// time stamp
-			repName = "Automation Report" + timeStamp + ".html";
+			repName = "Automation Report_" + timeStamp + ".html";
 			String reportPath = System.getProperty("user.dir") + "/src/test/resources/ExtentReport/"+repName+"";
 			ExtentSparkReporter spark = new ExtentSparkReporter(reportPath);
 			spark.config().setReportName("Automation Test Report");
