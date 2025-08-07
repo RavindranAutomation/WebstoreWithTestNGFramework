@@ -28,9 +28,10 @@ public class ExtentManager {
 	// Initialize the Extent Report
 	public synchronized static ExtentReports getReporter() {
 		if (extent == null) {
-			String timeStamp = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new Date());// time stamp
-			repName = "AutomationReport" + timeStamp + ".html";
-			String reportPath = System.getProperty("user.dir") + "/src/test/resources/ExtentReport/"+repName+"";
+			//String timeStamp = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new Date());// time stamp
+			//			repName = "AutomationReport" + timeStamp + ".html";
+			//			String reportPath = System.getProperty("user.dir") + "/src/test/resources/ExtentReport/"+repName+"";
+			String reportPath = "src/test/resources/ExtentReport/LatestReport.html";
 			ExtentSparkReporter spark = new ExtentSparkReporter(reportPath);
 			spark.config().setReportName("Automation Test Report");
 			spark.config().setDocumentTitle("Webstore Report");
@@ -53,17 +54,17 @@ public class ExtentManager {
 		test.set(extentTest);
 		return extentTest;
 	}
-	
+
 	//End a Test
 	public synchronized static void endTest() {
 		getReporter().flush();
 	}
-	
+
 	//Get Current Thread's test
 	public synchronized static ExtentTest getTest() {
 		return test.get();
 	}
-	
+
 	//Method to get the name of the current test
 	public static String getTestName() {
 		ExtentTest currentTest = getTest();
@@ -74,25 +75,25 @@ public class ExtentManager {
 			return "No test is currently active for this thread";
 		}
 	}
-	
+
 	//Log a step
 	public static void logStep(String logMessage) {
 		getTest().info(logMessage);
 	}
-	
+
 	//Log a step validation with screenshot
 	public static void logStepWithScreenshot(WebDriver driver, String logMessage, String screenShotMessage) {
 		getTest().pass(logMessage);
 		//Screenshot method
 		attachScreenshot(driver,screenShotMessage);
-		
+
 	}
-	
+
 	//Log a step validation for API
 	public static void logStepValidationForAPI(String logMessage) {
 		getTest().pass(logMessage);
 	}
-	
+
 	//Log a Failure
 	public static void logFailure(WebDriver driver, String logMessage, String screenShotMessage) {
 		String colorMessage = String.format("<span style='color:red;'>%s</span>", logMessage);
@@ -100,13 +101,13 @@ public class ExtentManager {
 		//Screenshot method
 		attachScreenshot(driver,screenShotMessage);
 	}
-	
+
 	//Log a Failure for API
 	public static void logFailureAPI(String logMessage) {
 		String colorMessage = String.format("<span style='color:red;'>%s</span>", logMessage);
 		getTest().fail(colorMessage);
 	}
-	
+
 	//Log a skip
 	public static void logSkip(String logMessage) {
 		String colorMessage = String.format("<span style='color:orange;'>%s</span>", logMessage);
@@ -115,26 +116,26 @@ public class ExtentManager {
 
 	//Take a screenshot with date and time in the file
 	public synchronized static String takeScreenshot(WebDriver driver, String screenshotName) {
-        TakesScreenshot ts = (TakesScreenshot)driver;
-        File src = ts.getScreenshotAs(OutputType.FILE);
-        //Format date and Time for file name
-        String timeStamp = new SimpleDateFormat("yyyy-MM-dd_HH-mm-ss").format(new Date());
-        
-        //Saving the screenshot to a file
-        String destPath = System.getProperty("user.dir") + "/src/test/resources/screenshots/"+screenshotName+"_"+timeStamp+".png";
-        
-        File finalPath = new File(destPath);
-        try {
+		TakesScreenshot ts = (TakesScreenshot)driver;
+		File src = ts.getScreenshotAs(OutputType.FILE);
+		//Format date and Time for file name
+		String timeStamp = new SimpleDateFormat("yyyy-MM-dd_HH-mm-ss").format(new Date());
+
+		//Saving the screenshot to a file
+		String destPath = System.getProperty("user.dir") + "/src/test/resources/screenshots/"+screenshotName+"_"+timeStamp+".png";
+
+		File finalPath = new File(destPath);
+		try {
 			FileUtils.copyFile(src, finalPath);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-        //Convert screenshot to Base64 fir embedding in the Report
-        String base64Format = convertToBase64(src);
-        return base64Format;
+		//Convert screenshot to Base64 fir embedding in the Report
+		String base64Format = convertToBase64(src);
+		return base64Format;
 	}
-	
+
 	//Convert screenshot to Base64 format
 	public static String convertToBase64(File screenShotFile) {
 		String base64Format="";
@@ -148,7 +149,7 @@ public class ExtentManager {
 		}
 		return base64Format;
 	}
-	
+
 	//Attach screenshot to report using Base64
 	public synchronized static void attachScreenshot(WebDriver driver, String message) {
 		try {
@@ -159,7 +160,7 @@ public class ExtentManager {
 			e.printStackTrace();
 		}
 	}
-	
+
 	// Register WebDriver for current Thread
 	public static void registerDriver(WebDriver driver) {
 		driverMap.put(Thread.currentThread().getId(), driver);
