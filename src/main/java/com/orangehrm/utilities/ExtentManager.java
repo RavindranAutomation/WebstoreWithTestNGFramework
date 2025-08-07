@@ -28,16 +28,10 @@ public class ExtentManager {
 	// Initialize the Extent Report
 	public synchronized static ExtentReports getReporter() {
 		if (extent == null) {
-<<<<<<< HEAD
 			//String timeStamp = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new Date());// time stamp
 			//			repName = "AutomationReport" + timeStamp + ".html";
 			//			String reportPath = System.getProperty("user.dir") + "/src/test/resources/ExtentReport/"+repName+"";
 			String reportPath = "src/test/resources/ExtentReport/LatestReport.html";
-=======
-			String timeStamp = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new Date());// time stamp
-			repName = "AutomationReport_" + timeStamp + ".html";
-			String reportPath = System.getProperty("user.dir") + "/src/test/resources/ExtentReport/"+repName+"";
->>>>>>> 0cec146278baf5ac7ed73d9d7fe75181cd82f393
 			ExtentSparkReporter spark = new ExtentSparkReporter(reportPath);
 			spark.config().setReportName("Automation Test Report");
 			spark.config().setDocumentTitle("Webstore Report");
