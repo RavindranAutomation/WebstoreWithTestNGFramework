@@ -8,7 +8,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git branch: 'main', url: 'https://github.com/hverma22/Selenium-Test-Framework.git'
+                git branch: 'master', url: 'https://github.com/RavindranAutomation/WebstoreWithTestNGFramework.git'
             }
         }
 
@@ -28,8 +28,8 @@ pipeline {
             steps {
                 publishHTML(target: [
                     reportDir: 'src/test/resources/ExtentReport',  
-                    reportFiles: 'ExtentReport.html',  
-                    reportName: 'Extent Spark Report'
+                    reportFiles: 'LatestReport.html',  
+                    reportName: 'HTML Spark Report'
                 ])
             }
         }
@@ -43,7 +43,7 @@ pipeline {
 
 success {
     emailext (
-        to: 'testemail@gmail.com',
+        to: 'ravindrann1081998@gmail.com',
         subject: "Build Success: ${env.JOB_NAME} #${env.BUILD_NUMBER}",
         body: """
         <html>
@@ -63,7 +63,7 @@ success {
 
         <p><b>Build log is attached.</b></p>
 
-        <p><b>Extent Report:</b> <a href="http://localhost:8080/job/OrangeHRM_Build/HTML_20Extent_20Report/">Click here</a></p>
+        <p><b>Extent Report:</b> <a href="http://localhost:8080/job/Webstore_Build/HTML_20Spark_20Report/">Click here</a></p>
 
         <p>Best regards,</p>
         <p><b>Automation Team</b></p>
@@ -99,7 +99,7 @@ failure {
 
         <p><b>Please check the logs and take necessary actions.</b></p>
 
-        <p><b>Extent Report (if available):</b> <a href="http://localhost:8080/job/OrangeHRM_Pipeline_Job/lastSuccessfulBuild/artifact/src/test/resources/ExtentReport/ExtentReport.html">Click here</a></p>
+        <p><b>Extent Report (if available):</b> <a href="http://localhost:8080/job/Webstore_Build/HTML_20Spark_20Report//">Click here</a></p>
 
         <p>Best regards,</p>
         <p><b>Automation Team</b></p>
