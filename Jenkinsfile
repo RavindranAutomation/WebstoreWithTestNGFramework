@@ -77,7 +77,7 @@ success {
 
 failure {
     emailext (
-        to: 'testemail@gmail.com',
+        to: 'ravindrann1081998@gmail.com',
         subject: "Build Failed: ${env.JOB_NAME} #${env.BUILD_NUMBER}",
         body: """
         <html>

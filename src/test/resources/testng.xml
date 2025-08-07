@@ -7,7 +7,7 @@
 	<test name="OrangeHRMTest">
 		<classes>
 			<class name="com.orangehrm.test.RegistrationTest" />
-			<<class name="com.orangehrm.test.LoginTest" />
+			<class name="com.orangehrm.test.LoginTest" />
 			<class name="com.orangehrm.test.ForgetPasswordTest" />
 			<class name="com.orangehrm.test.SearchTest" />
 			<class name="com.orangehrm.test.CartTest" />
