@@ -107,7 +107,7 @@ public class BaseClass {
 			
 			// Create FirefoxOptions
 			FirefoxOptions options = new FirefoxOptions();
-			options.addArguments("--headless"); // Run Firefox in headless mode
+			//options.addArguments("--headless"); // Run Firefox in headless mode
 			options.addArguments("--disable-gpu"); // Disable GPU rendering (useful for headless mode)
 			options.addArguments("--width=1920"); // Set browser width
 			options.addArguments("--height=1080"); // Set browser height
