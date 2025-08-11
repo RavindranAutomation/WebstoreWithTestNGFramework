@@ -19,7 +19,7 @@ public class SearchTest extends BaseClass {
 
 	private SearchResultsPage searchPage;
 
-	@BeforeMethod()
+	@BeforeMethod(groups = { "Smoke","Sanity", "Master" })
 	public void setupPages() {
 		loginPage = new LoginPage(getDriver());
 		headerPage = new HeaderPage(getDriver());
@@ -28,8 +28,9 @@ public class SearchTest extends BaseClass {
 
 	}
 
-	@Test(priority = 1, groups = { "Sanity", "Master" })
+	@Test(priority = 1)
 	public void TC_008_VerifySearchWithoutAddingAnyProduct() {
+		logger.info("************** Starting Test - TC_008_VerifySearchWithoutAddingAnyProduct ****************");
 		headerPage.clickOnLoginHeader();
 		loginPage.login(prop.getProperty("username"), prop.getProperty("password"));
 		ExtentManager.logStep("Clicking on search button");
@@ -43,7 +44,7 @@ public class SearchTest extends BaseClass {
 
 	}
 
-	@Test(priority = 2, groups = { "Sanity", "Master" })
+	@Test(priority = 2)
 	public void TC_009_VerifySearchWithValidProduct() {
 		headerPage.clickOnLoginHeader();
 		loginPage.login(prop.getProperty("username"), prop.getProperty("password"));
@@ -61,7 +62,7 @@ public class SearchTest extends BaseClass {
 		}
 	}
 
-	@Test(priority = 3, groups = { "Sanity", "Master" })
+	@Test(priority = 3)
 	public void TC_010_VerifySearchWithInvalidProduct() {
 		headerPage.clickOnLoginHeader();
 		loginPage.login(prop.getProperty("username"), prop.getProperty("password"));
@@ -80,7 +81,7 @@ public class SearchTest extends BaseClass {
 
 	}
 
-	@AfterMethod(groups = { "Sanity", "Master" })
+	@AfterMethod
 	public void logoutApp() {
 		headerPage.clickOnLogoutHeader();
 

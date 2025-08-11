@@ -84,7 +84,7 @@ public class CartTest extends BaseClass {
 
 	}
 
-	@Test(priority = 2,enabled = false)
+	@Test(priority = 2)
 	public void TC_012_Verify_AddToCartCounter() {
 		headerPage.clickOnLoginHeader();
 		loginPage.login(prop.getProperty("username"), prop.getProperty("password"));

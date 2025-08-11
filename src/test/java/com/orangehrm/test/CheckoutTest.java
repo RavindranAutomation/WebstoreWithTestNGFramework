@@ -30,7 +30,7 @@ public class CheckoutTest extends BaseClass {
 	private OrderCompltetionPage orderCompletionPage;
 	int shoppingCartQty;
 
-	@BeforeMethod
+	@BeforeMethod()
 	public void setupPages() {
 		loginPage = new LoginPage(getDriver());
 		headerPage = new HeaderPage(getDriver());
@@ -40,7 +40,7 @@ public class CheckoutTest extends BaseClass {
 		orderCompletionPage = new OrderCompltetionPage(getDriver());
 	}
 
-	
+
 
 	@Test(priority = 1)
 	public void TC_013_Verify_CheckoutwithExistingAddress() {
@@ -103,7 +103,7 @@ public class CheckoutTest extends BaseClass {
 		System.out.println(orderId);
 
 	}
-	
+
 	@AfterMethod
 	public void logoutApp() {
 		headerPage.clickOnLogoutHeader();

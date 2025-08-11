@@ -1,17 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
-<suite name="OrangeHRMSuite" parallel="false" thread-count="7">
+<suite name="Web Store Suite" parallel="false" thread-count="4">
 	<listeners>
 		<listener class-name="com.orangehrm.listeners.TestListener"></listener>
 	</listeners>
-	<test name="OrangeHRMTest">
+	<test name="Webstore Test">
+
+		<!--<groups>
+		
+			<run>
+				<include name="Smoke"></include>
+			</run>
+		</groups>-->
 		<classes>
 			<class name="com.orangehrm.test.RegistrationTest" />
-			<class name="com.orangehrm.test.LoginTest" />
+			<!--<class name="com.orangehrm.test.LoginTest" />
 			<class name="com.orangehrm.test.ForgetPasswordTest" />
 			<class name="com.orangehrm.test.SearchTest" />
 			<class name="com.orangehrm.test.CartTest" />
 			<class name="com.orangehrm.test.CheckoutTest" />
+			<class name="com.orangehrm.test.CartTest" />-->
 
 		</classes>
 	</test>

@@ -10,22 +10,23 @@ import com.orangehrm.pages.LoginPage;
 import com.orangehrm.pages.PasswordRecoveryPage;
 import com.orangehrm.utilities.ExtentManager;
 
-public class ForgetPasswordTest extends BaseClass{
-	
-	
+public class ForgetPasswordTest extends BaseClass {
+
 	private LoginPage loginPage;
 	private HeaderPage headerPage;
 	private PasswordRecoveryPage recoveryPage;
-	
-	@BeforeMethod
+
+	@BeforeMethod()
 	public void setupPages() {
 		loginPage = new LoginPage(getDriver());
-		headerPage  = new HeaderPage(getDriver());
+		headerPage = new HeaderPage(getDriver());
 		recoveryPage = new PasswordRecoveryPage(getDriver());
+		logger.info("Page objects initialized successfully");
 	}
-	
-	@Test
+
+	@Test(priority = 1, description = "Verify forgot password functionality with valid email")
 	public void TC_007_VerifyForgotPassword() {
+		logger.info("Starting Test - TC_007_VerifyForgotPassword");
 		ExtentManager.logStep("Navigating to login page");
 		ExtentManager.logStep("Clicking on Login header");
 		headerPage.clickOnLoginHeader();
@@ -36,8 +37,8 @@ public class ForgetPasswordTest extends BaseClass{
 		ExtentManager.logStep("Clicking on recovery button");
 		recoveryPage.clickOnRecoveryBtn();
 		ExtentManager.logStep("Validating recovery sent message - " + recoveryPage.getRecoveryInstructionMessage());
-		Assert.assertEquals("Email with instructions has been sent to you.", recoveryPage.getRecoveryInstructionMessage());
-		
+		Assert.assertEquals("Email with instructions has been sent to you.",
+				recoveryPage.getRecoveryInstructionMessage());
 
 	}
 

@@ -48,12 +48,12 @@ public class RegistrationTest extends BaseClass {
 			Assert.assertEquals(homePage.getRegisterSuccessMessage(), "Your registration completed");
 		} catch (Exception e) {
 			e.printStackTrace();
-			ExtentManager.logStepWithScreenshot(getDriver(), "Test Case is Passed",e.getMessage());
+			ExtentManager.logStepWithScreenshot(getDriver(), "Test Case is Passed", e.getMessage());
 		}
 
 	}
 
-	@Test(priority = 2,enabled = false)
+	@Test(priority = 2)
 	public void TC_002_registerWithExistingEmail() {
 		try {
 			ExtentManager.logStep("Clicking on register header");
@@ -81,7 +81,7 @@ public class RegistrationTest extends BaseClass {
 
 	}
 
-	@Test(priority = 3,enabled = false)
+	@Test(priority = 3)
 	public void TC_003_registerWithInvalidEmailFormat() {
 		try {
 			ExtentManager.logStep("Clicking on register header");
